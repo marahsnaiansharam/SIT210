@@ -1,0 +1,11 @@
+This program is designed to replicate the task objective of building and operating a system to turn on the porch and hallway lights when a user presses a push button switch. The porch light remains on for 30 seconds, the hallway light remains on for 60 seconds. 
+
+The variables are initialised for use the functions. 
+
+The setup function declares the pinMode for the LED lights and push button. 
+
+The lightsOn function takes a given light as a variable and writes the value to high, turning the LED on. 
+
+The lightsOff function takes a given light, a millisecond value and the intended duration of that light, and checks whether the light has been on for its intended duration. If it has, it writes the value to low, turning the LED off. If it has not, it does nothing. 
+
+The main program loop checks the state of the button press. If the button is being pressed then it calls the lightsOn function, the main loop will then continue until the duration has elapsed to the point where the condition is met and the LEDs turn off again. If the user continues to hold the button, or presses the button again during the duration, the duration period will restart. 
