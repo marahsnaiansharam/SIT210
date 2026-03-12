@@ -1,8 +1,7 @@
 #include "DHT.h"
 #include <WiFiNINA.h>
 #include "secrets.h"
-#include "ThingSpeak.h" // always include thingspeak header file after other header files and custom macros
-
+#include "ThingSpeak.h"
 
 char ssid[] = SECRET_SSID;   
 char pass[] = SECRET_PASS;  
@@ -23,8 +22,7 @@ int LDRSensorValue;
 
 void setup() 
 {
-  Serial.begin(115200);  // Initialize serial **************************************
-
+  Serial.begin(115200); 
   // check for the WiFi module:
   if (WiFi.status() == WL_NO_MODULE) {
     Serial.println("Communication with WiFi module failed!");
@@ -37,8 +35,7 @@ void setup()
     Serial.println("Please upgrade the firmware");
   }
   dht.begin();
-  ThingSpeak.begin(client);  //Initialize ThingSpeak
-
+  ThingSpeak.begin(client);
 }
 
 void loop() 
@@ -51,13 +48,14 @@ void loop()
     Serial.println(SECRET_SSID);
     while(WiFi.status() != WL_CONNECTED)
     {
-      WiFi.begin(ssid, pass); // Connect to WPA/WPA2 network. Change this line if using open or WEP network
+      WiFi.begin(ssid, pass);
       Serial.print(".");
       delay(5000);     
     } 
     Serial.println("\nConnected.");
   }
 
+  // Call method to capture, set and write data to channel followed by 30sec delay 
   updateChannel();
   delay(30000);
 
